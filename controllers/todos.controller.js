@@ -4,7 +4,7 @@ export const getTodos = async(req, res, next) => {
     try {
         const { user } = req;
 
-        // Checking User role and fetching tasks accordingly here so that only can get access to all tasks
+        // Checking User role and feching tasks accordingly here so that only can get access to all tasks
         const todos = user.role === "admin" ?
             await getAllTodos() :
             await getUserTodos(user._id);

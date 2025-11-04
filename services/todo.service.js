@@ -15,8 +15,11 @@ export const createTask = async(data) => {
 };
 
 export const updateTask = async(id, data) => {
-    return await Todo.findByIdAndUpdate(id, data, { new: true });
+    const task = await Todo.findByIdAndUpdate(id, data, { new: true });
+    if (!task) throw new Error("Task not found");
+    return task;
 };
+
 
 export const deleteTask = async(id) => {
     return await Todo.findByIdAndDelete(id);
